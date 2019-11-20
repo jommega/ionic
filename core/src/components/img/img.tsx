@@ -46,6 +46,10 @@ export class Img implements ComponentInterface {
     this.addIO();
   }
 
+  componentDidUnload() {
+    this.removeIO();
+  }
+
   private addIO() {
     if (this.src === undefined) {
       return;
