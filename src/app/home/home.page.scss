@@ -1,0 +1,12 @@
+/* inter-regular - latin */
+@font-face {
+  font-family: 'Baloo2-Medium';
+  font-style: normal;
+  font-weight: Thin;
+  src: local(''),
+       url('../../assets/fonts/Baloo2-Medium.ttf') format('truetype') /* Safari, Android, iOS */
+}
+
+* {
+  font-family: 'Baloo2-Medium' !important;
+}

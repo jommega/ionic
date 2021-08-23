@@ -1,0 +1,112 @@
+<ion-header style="background-color: red;" id="vistacatalogo">
+  <ion-toolbar style="background-color: red;" color="danger">
+    <ion-grid class="ion-no-margin ion-no-padding">
+        <ion-row class="ion-no-margin ion-no-padding">
+          <ion-col style="padding-left: 5px;" class="ion-align-self-stretch">
+              Proceso de Compra  
+          </ion-col>          
+        </ion-row>
+    </ion-grid>
+
+    <ion-buttons slot='end'>
+      <ion-button  fill="clear" color="light" (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nombre Completo</ion-label>
+          <ion-input type="text" name="name" required [(ngModel)]="data.name"></ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="f.controls.name && (f.controls.name.valid || (f.controls.name.pristine && !isSubmitted))">
+          <ion-text color="danger">Su nombre es requerido</ion-text>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Cédula o Pasaporte</ion-label>
+          <ion-input type="text" name="cedopass" required [(ngModel)]="data.cedopass"></ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="f.controls.cedopass && (f.controls.cedopass.valid || (f.controls.cedopass.pristine && !isSubmitted))">
+          <ion-text color="danger">Cédula o Passaporte requerido</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Ciudad</ion-label>
+          <ion-input type="text" name="city" required [(ngModel)]="data.city"></ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="f.controls.city && (f.controls.city.valid || (f.controls.city.pristine && !isSubmitted))">
+          <ion-text color="danger">Ciudad requerida</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Dirección de Entrega</ion-label>
+          <ion-input type="text" name="address" required [(ngModel)]="data.address"></ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="f.controls.address && (f.controls.address.valid || (f.controls.address.pristine && !isSubmitted))">
+          <ion-text color="danger">Dirección Requerida</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Teléfono</ion-label>
+          <ion-input type="tel" name="phone" [(ngModel)]="data.phone"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo Electronico</ion-label>
+          <ion-input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required [(ngModel)]="data.email"></ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="f.controls.email && (f.controls.email.valid || (f.controls.email.pristine && !isSubmitted))">
+          <ion-text color="danger">correo requerido</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Cantidad</ion-label>
+          <ion-input type="tel" name="quantity" [(ngModel)]="data.quantity" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Información Adicional</ion-label>
+          <ion-input type="text" required minlength=4 name="comment" [(ngModel)]="data.comment"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="(isSubmitted && f.controls.comment && f.controls.comment.pristine) || ((f.controls.comment) && 
+          (f.controls.comment.dirty && f.controls.comment.errors))">
+          <ion-text color="danger">
+            Por Favor escriba 
+            {{ 4 - (f.controls.comment.errors.minlength ? f.controls.comment.errors.minlength.actualLength : 0)  }} más
+            carácteres
+          </ion-text>
+        </ion-item>
+
+        <ion-img name="imagen" src="{{imagencatalog}}" alt=""></ion-img>
+        <ion-item>
+          <ion-label>Acepta los términos y condiciones</ion-label>
+          <ion-toggle [(ngModel)]="data.tos" name="tos" type="button" (click)="noSubmit($event)"></ion-toggle>
+        </ion-item>
+
+        <p>Más información sera enviada a su correo para terminar el proceso de compra, sino lo encuentra en bandeja de entrada, busquelo en correos no deseados.</p>
+        <p>Gracias por Comprar con nosotros.</p>
+                    
+        <ion-item [hidden]="(!isSubmitted) || (f.controls.tos && data.tos)" class="note danger">
+          <ion-text color="danger">Acepte los términos</ion-text>
+        </ion-item>
+      </ion-list>
+
+      <ion-item float-right lines="none">
+        <ion-button type="submit" size="small">Enviar</ion-button>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-header style="background-color: red;" id="vistacatalogo">
+  <ion-toolbar style="background-color: red;" color="danger">
+    <ion-grid class="ion-no-margin ion-no-padding">
+        <ion-row class="ion-no-margin ion-no-padding">
+          <ion-col style="padding-left: 5px;" class="ion-align-self-stretch">
+              {{ nombrecomp }}     
+          </ion-col>          
+            <ion-col style="width: 30px;" class="ion-align-self-center">
+             <div Style = "text-align: center;">
+               Paginá(s): {{contador}}/{{total}}
+            </div>
+            </ion-col>          
+        </ion-row>
+    </ion-grid>
+    <!-- defaultHref="/tabs/tab1"  routerLink="/tabs/tab1" -->
+    <ion-buttons slot='end'>
+      <ion-button  fill="clear" color="light" (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="vistacatalogo" fullscreen>
+    <ion-slides class="swiper-zoom-container"  #slides (ionSlideDidChange)="slideChanged($event)"> 
+
+          <ion-slide *ngFor="let imagenes of CatalogosArray; let i = index;">
+            <preload-image class="ion-no-padding" [ratio]="{w: 1, h: 1}" [src]="imagenes.file"></preload-image>
+          </ion-slide>
+  <ion-button expand="full" color="secondary">'Add to Cart'</ion-button>
+    </ion-slides>
+</ion-content>
+
+<ion-footer >
+          <ion-tab-bar color="danger">
+            <ion-tab-button (click)="presentActionSheet2()" tab="llamadas">
+              <ion-icon name="call"></ion-icon>
+              <ion-label>Llamar</ion-label>
+            </ion-tab-button>
+            <ion-tab-button  (click)="openModal()" *ngIf="hayzona == '1' || haycoti =='1'">
+              <ion-icon name="mail"></ion-icon>
+              <ion-label>Cotizar</ion-label>
+            </ion-tab-button>
+            <ion-tab-button (click)="openModalCompras()" *ngIf="haycompra == '1'">
+              <ion-icon name="cart"></ion-icon>
+              <ion-label>Comprar</ion-label>
+            </ion-tab-button>
+            <ion-tab-button (click)="ponerencarrito()">
+              <ion-icon name="cart"></ion-icon>
+              <ion-label>Comprar</ion-label>
+            </ion-tab-button>
+            <ion-tab-button *ngIf="hayhotel == '1'">
+              <ion-icon name="bed"></ion-icon>
+              <ion-label>Reservar</ion-label>
+            </ion-tab-button>
+            <ion-tab-button (click)="presentActionSheet()" >
+              <ion-icon name="share-outline"></ion-icon>
+              <ion-label>Compartir</ion-label>
+             <!--  <div Style = "text-align: center; font-size: small;">{{totlikes}}</div> -->
+            </ion-tab-button>
+          </ion-tab-bar>
+</ion-footer>

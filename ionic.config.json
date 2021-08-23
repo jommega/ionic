@@ -1,0 +1,7 @@
+{
+  "name": "Ofertas Panama",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

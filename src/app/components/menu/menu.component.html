@@ -1,0 +1,24 @@
+<ion-menu side="start" menuId = "mycontent" type = "overlay" contentId="mycontent">
+  <ion-header>
+    <ion-toolbar class="ion-no-padding">
+      <img class="ion-no-padding" src="./../../../assets/graficodelafuncion.png" alt="">
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-item>
+  <ion-avatar slot="start">
+    <img src={{imagenuser}}>
+  </ion-avatar>
+  <ion-label style="font-size: 12px;" >{{nombreuser}}</ion-label>
+</ion-item>
+  <ion-content>
+    <ion-list lines="none">
+      <ion-menu-toggle>
+        <ion-item style="font-size: 12px; height: 35px;" *ngFor="let p of appMenu" (click)="navigateMenu(p.url)">
+          <ion-icon style = "width: 18px;" [name]="p.icon" slot="start"></ion-icon>
+          <ion-label>{{p.title}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

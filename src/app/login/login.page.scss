@@ -1,0 +1,12 @@
+/* inter-regular - latin */
+@font-face {
+  font-family: 'Inter-Thin';
+  font-style: normal;
+  font-weight: Thin;
+  src: local(''),
+       url('../../assets/fonts/inter-Thin.ttf') format('truetype') /* Safari, Android, iOS */
+}
+
+* {
+  font-family: 'Inter-Thin' !important;
+}

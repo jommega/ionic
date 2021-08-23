@@ -1,0 +1,25 @@
+/* inter-regular - latin */
+@font-face {
+  font-family: 'Baloo2-Medium';
+  font-style: normal;
+  font-weight: Thin;
+  src: local(''),
+       url('../../assets/fonts/Baloo2-Medium.ttf') format('truetype') /* Safari, Android, iOS */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-family: 'Inter-Thin';
+  font-style: normal;
+  font-weight: Thin;
+  src: local(''),
+       url('../../assets/fonts/inter-Thin.ttf') format('truetype') /* Safari, Android, iOS */
+}
+
+* {
+  font-family: 'Baloo2-Medium' !important;
+}
+
+ion-col {
+  text-align: center;
+}
